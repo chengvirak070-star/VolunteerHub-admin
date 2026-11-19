@@ -60,6 +60,11 @@ export default function BugReports() {
               </span>
               <div className="grow">
                 <p>{b.message}</p>
+                {b.screenshot_url && (
+                  <a href={b.screenshot_url} target="_blank" rel="noreferrer" title="Open full size" className="bug-thumb">
+                    <img src={b.screenshot_url} alt="Screenshot from the user" loading="lazy" />
+                  </a>
+                )}
                 <div className="who xs muted" style={{ marginTop: 6 }}>
                   {b.user && <Avatar user={b.user} size={20} />}
                   <span>

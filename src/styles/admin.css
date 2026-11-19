@@ -728,3 +728,24 @@ button {
     padding: 18px 14px 40px;
   }
 }
+
+/* Bug report screenshot thumbnail */
+.bug-thumb {
+  display: inline-block;
+  margin-top: 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f1f4f3;
+}
+
+.bug-thumb img {
+  display: block;
+  max-width: 320px;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.bug-thumb:hover {
+  border-color: var(--teal);
+}
