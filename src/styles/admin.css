@@ -749,3 +749,214 @@ button {
 .bug-thumb:hover {
   border-color: var(--teal);
 }
+
+/* ============ Sidebar v2 ============ */
+.sidebar {
+  padding: 18px 14px 14px;
+  gap: 0;
+  overflow-y: auto;
+}
+
+.sidebar .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 8px 20px;
+}
+
+.sidebar .brand img {
+  height: 24px;
+  width: auto;
+  max-width: 150px;
+}
+
+.brand-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--teal-bright);
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+.sidebar nav {
+  flex: 0 0 auto;
+  gap: 14px;
+}
+
+.nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-title {
+  padding: 0 10px 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7d92a6;
+}
+
+.sidebar nav a {
+  position: relative;
+  padding: 8px 10px;
+  color: #c9d4de;
+}
+
+.sidebar nav a .nav-label {
+  flex: 1;
+}
+
+.sidebar nav a.active {
+  background: rgba(79, 209, 181, 0.12);
+  color: #fff;
+}
+
+.sidebar nav a.active::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 6px;
+  bottom: 6px;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background: var(--teal-bright);
+}
+
+.sidebar nav a.active svg {
+  color: var(--teal-bright);
+}
+
+.sidebar nav a .count.soft {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+/* "Needs your attention" card */
+.todo-card {
+  margin: auto 0 12px;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(79, 209, 181, 0.16), rgba(79, 209, 181, 0.05));
+  border: 1px solid rgba(79, 209, 181, 0.25);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  align-items: center;
+}
+
+.todo-num {
+  grid-row: span 2;
+  font-family: var(--font-head);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--teal-bright);
+  line-height: 1;
+}
+
+.todo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.todo-text strong {
+  color: #fff;
+  font-size: 13px;
+}
+
+.todo-text span {
+  font-size: 12px;
+  color: #a9b8c6;
+}
+
+.todo-go {
+  grid-column: 2;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--teal-bright);
+}
+
+.todo-go:hover {
+  text-decoration: underline;
+}
+
+.site-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  font-size: 13px;
+  color: #a9b8c6;
+}
+
+.site-link:hover {
+  background: var(--navy-2);
+  color: #fff;
+}
+
+.sidebar .me {
+  margin-top: 8px;
+  padding: 12px 8px 4px;
+}
+
+.me-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.me-text strong {
+  color: #fff;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.me-text span {
+  font-size: 12px;
+  color: #7d92a6;
+}
+
+.sidebar .me .logout {
+  margin-left: 0;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: 9px;
+  flex-shrink: 0;
+}
+
+.sidebar .me .logout:hover {
+  background: rgba(192, 57, 43, 0.18);
+  border-color: rgba(192, 57, 43, 0.5);
+  color: #ffb4ab;
+}
+
+@media (max-width: 760px) {
+  .todo-card,
+  .site-link,
+  .nav-title {
+    display: none;
+  }
+
+  .sidebar nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .nav-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
