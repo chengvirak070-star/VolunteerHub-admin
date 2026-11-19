@@ -5,9 +5,9 @@ import { api, qs, SITE_URL, toast } from '../services/api.js'
 import { ago } from '../utils/format.js'
 
 const ACTIONS = {
-  hide_content: { label: 'Hide content', text: 'The post or comment is hidden from everyone except its author and admins.', danger: true },
-  block_user: { label: 'Block user', text: 'The author (or the reported person) is logged out and cannot log in.', danger: true },
-  dismiss: { label: 'Dismiss', text: 'Nothing changes. The report is closed.', danger: false },
+  hide_content: { label: 'Hide content', text: 'The post or comment is hidden from everyone except its author and admins. Everyone who reported it gets a notification.', danger: true },
+  block_user: { label: 'Block user', text: 'The author (or the reported person) is logged out and cannot log in. Everyone who reported it gets a notification.', danger: true },
+  dismiss: { label: 'Dismiss', text: 'Nothing changes. The report is closed and the reporters are told it does not break the rules.', danger: false },
 }
 
 export default function Reports() {
@@ -34,7 +34,7 @@ export default function Reports() {
       <div className="page-head">
         <div>
           <h1>Reports</h1>
-          <p className="muted">Posts, comments and people reported by users.</p>
+          <p className="muted">Posts, comments and people reported by users. Reporters are notified when you act on a report.</p>
         </div>
       </div>
 

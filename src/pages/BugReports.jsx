@@ -13,7 +13,7 @@ export default function BugReports() {
     try {
       await api(`/admin/bug-reports/${bug.id}/fixed`, { method: 'POST' })
       setData((d) => ({ ...d, data: d.data.filter((b) => b.id !== bug.id) }))
-      toast('Marked as fixed')
+      toast(bug.user ? `Marked as fixed — ${bug.user.name} was notified` : 'Marked as fixed')
     } catch (err) {
       toast(err.message, true)
     }
@@ -24,7 +24,7 @@ export default function BugReports() {
       <div className="page-head">
         <div>
           <h1>Bug reports</h1>
-          <p className="muted">Problems users reported in the app.</p>
+          <p className="muted">Problems users reported in the app. Marking one fixed notifies the person who reported it.</p>
         </div>
       </div>
 
