@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { Avatar, Icon } from '../components/ui.jsx'
+import { Avatar, Confirm, Icon } from '../components/ui.jsx'
 import { useAuth } from '../context/AuthContext.jsx'
 import { api, SITE_URL } from '../services/api.js'
 
@@ -56,6 +56,8 @@ export default function AdminLayout() {
   const location = useLocation()
   const counts = useCounts(location.pathname)
   const [toast, setToast] = useState(null)
+  const [confirmLogout, setConfirmLogout] = useState(false)
+  const closeLogout = useCallback(() => setConfirmLogout(false), [])
   const waiting = counts.approvals + counts.reports + counts.bugs
 
   // toast('…') from anywhere
@@ -140,7 +142,7 @@ export default function AdminLayout() {
             <strong>{user.name}</strong>
             <span>Administrator</span>
           </div>
-          <button type="button" className="logout" onClick={logout} title="Log out" aria-label="Log out">
+          <button type="button" className="logout" onClick={() => setConfirmLogout(true)} title="Log out" aria-label="Log out">
             <Icon name="logout" size={18} />
           </button>
         </div>
@@ -149,6 +151,17 @@ export default function AdminLayout() {
       <main className="main">
         <Outlet />
       </main>
+
+      {confirmLogout && (
+        <Confirm
+          title="Log out?"
+          text="You'll need to log in again to use the admin panel."
+          confirmLabel="Log out"
+          danger
+          onConfirm={logout}
+          onClose={closeLogout}
+        />
+      )}
 
       {toast && <div className={`toast ${toast.error ? 'error' : ''}`}>{toast.message}</div>}
     </div>
